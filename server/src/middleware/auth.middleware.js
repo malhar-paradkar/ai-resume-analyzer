@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-module.exports = (req, res, next) => {
+const token = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -17,3 +17,5 @@ module.exports = (req, res, next) => {
         return res.status(401).json({ message: "Token invalid" });
     }
 };
+
+export default token;

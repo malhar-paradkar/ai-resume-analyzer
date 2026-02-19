@@ -1,12 +1,12 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 
 const generateToken = (userId) => {
     return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
 };
 
-exports.register = async (req, res) => {
+export const register = async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -30,22 +30,22 @@ exports.register = async (req, res) => {
     }
 };
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ messagE: "Invalid credentials" });
+            return res.status(400).json({ message: "Invalid credentials" });
         }
 
-        if (!(bcrypt.compare(password, user.passwordHash))) {
+        if (!(await bcrypt.compare(password, user.passwordHash))) {
             return res.status(400).json({ message: "Invalid credentials" });
         }
 
         const token = generateToken(user._id);
 
-        res.statur(200).json({ token, user: {id: user._id, email: user.email } });
+        res.status(200).json({ token, user: {id: user._id, email: user.email } });
     }   catch (err) {
         res.status(500).json({ message: "Server error "});
     }
