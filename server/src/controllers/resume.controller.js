@@ -58,3 +58,25 @@ export const getUserResumes = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch resumes" });
   }
 };
+
+export const deleteResumes = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const resume = await Resume.findOne({
+      _id: id,
+      userId: req.user.id
+    });
+
+    if (!resume) {
+      return res.status(404).json({ message: "Resume not found" });
+    }
+
+    await resume.deleteOne();
+
+    res.status(200).json({ message: "Resume deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to delete resume" });
+  }
+};
