@@ -45,3 +45,16 @@ export const uploadResume = async (req, res) => {
     res.status(500).json({ message: "Resume parsing failed" });
   }
 };
+
+export const getUserResumes = async (req, res) => {
+  try{
+    const resumes = await Resume.find({ userId: req.user.id })
+    .select("-parsedText")
+    .sort({ createdAt: -1 });
+
+    res.status(200).json(resumes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to fetch resumes" });
+  }
+};
