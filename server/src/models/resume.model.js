@@ -13,6 +13,14 @@ const resumeSchema = new mongoose.Schema({
     parsedText: {
         type: String,
         required: true,
+    },
+    wordCount: {
+        type: Number,
+        default: 0
+    },
+    charCount: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true });
 
