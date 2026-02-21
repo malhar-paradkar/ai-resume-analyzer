@@ -24,10 +24,15 @@ export const uploadResume = async (req, res) => {
       return res.status(400).json({ message: "Unable to parse document" });
     }
 
+    const wordCount = parsedText.split(/\s+/).length;
+    const charCount = parsedText.length;
+
     const resume = await Resume.create({
       userId: req.user.id,
       originalFileName: req.file.originalname,
-      parsedText
+      parsedText,
+      wordCount,
+      charCount
     });
 
     res.status(201).json({
