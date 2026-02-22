@@ -1,5 +1,8 @@
 import Resume from "../models/resume.model.js";
 import { parsePDF, parseDOCX } from "../services/parser.service.js";
+import { extractSkills } from "../services/match.service.js";
+import { calculateMatch } from "../services/match.service.js";
+import Job from "../models/job.model.js";
 
 export const uploadResume = async (req, res) => {
   try {
@@ -78,5 +81,29 @@ export const deleteResumes = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Failed to delete resume" });
+  }
+};
+
+export const matchResumeToJob = async (req, res) => {
+  try {
+    const { resumeId, jobId } = req.body;
+
+    const resume = await Resume.findOne({ _id: resumeId, userId: req.user.id });
+
+    const job = await Job.findOne({ _id: jobId, userId: req.user.id });
+
+    if (!resume || !job) {
+      return res.status(404).json({ message: "Resume or Job not found" });
+    }
+
+    const resumeSkills = extractSkills(resume.parsedText);
+    const jobSkills = extractSkills(job.description);
+
+    const result = calculateMatch(resumeSkills, jobSkills);
+
+    res.status(200).json({ matchScore: result.score, matchedSkills: result.matchedSkills, missingSkills: result.missingSkills });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
   }
 };
