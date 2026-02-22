@@ -3,6 +3,7 @@ import { parsePDF, parseDOCX } from "../services/parser.service.js";
 import { extractSkills } from "../services/match.service.js";
 import { calculateMatch } from "../services/match.service.js";
 import Job from "../models/job.model.js";
+import { generateAIAnalysis } from "../services/ai.service.js";
 
 export const uploadResume = async (req, res) => {
   try {
@@ -95,13 +96,15 @@ export const matchResumeToJob = async (req, res) => {
     if (!resume || !job) {
       return res.status(404).json({ message: "Resume or Job not found" });
     }
-
+    // Rule-based Score
     const resumeSkills = extractSkills(resume.parsedText);
     const jobSkills = extractSkills(job.description);
+    const ruleResult = calculateMatch(resumeSkills, jobSkills);
 
-    const result = calculateMatch(resumeSkills, jobSkills);
+    // AI-based analysis
+    const aiResponse = await generateAIAnalysis( resume.parsedText, job.description );
 
-    res.status(200).json({ matchScore: result.score, matchedSkills: result.matchedSkills, missingSkills: result.missingSkills });
+    res.status(200).json({ ruleBasedScore: ruleResult.score, matchedSkills: ruleResult.matchedSkills, missingSkills: ruleResult.missingSkills, aiAnalysis: aiResponse });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });
