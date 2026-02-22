@@ -6,11 +6,14 @@ export const generateAIAnalytics = async (resumeText, jobText) => {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `
-        You are an ATS resume evaluation engine. Analyze the resume against the job description. Return:
-        1. Overall match percentage (0-100)
-        2. Key strengths
-        3. Missing skills
-        4. Suggestions for improvement
+        You are an ATS system. Return ONLY valid JSON in this exact format:
+
+        {
+            "overallScore": number,
+            "strengths": [string],
+            "missingSkills": [string],
+            "suggestions": [string]
+        }
 
         Resume: ${resumeText}
 
@@ -19,7 +22,12 @@ export const generateAIAnalytics = async (resumeText, jobText) => {
     `;
 
     const result = await model.generateContent(prompt);
-    const response = result.response;
+    const response = result.response.text();
 
-    return response.text();
+    try {
+        return JSON.parse(response);
+    }   catch (err) {
+        console.error("AI JSON parse failed: ", response);
+        throw new Error("AI response parsing failed");
+    }
 };
