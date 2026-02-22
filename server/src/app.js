@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.routes.js";
 import healthRoutes from "./routes/health.routes.js";
 import protectedRoutes from "./routes/protected.routes.js";
 import resumeRoutes from "./routes/resume.routes.js";
+import jobRoutes from "./routes/job.routes.js";
 
 const app = express();
 
@@ -14,5 +15,6 @@ app.use("/api/health", healthRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/protected", protectedRoutes);
 app.use("/api/resumes", resumeRoutes);
+app.use("/api/jobs", jobRoutes);
 
 export default app;
