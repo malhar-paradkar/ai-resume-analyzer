@@ -4,7 +4,7 @@ import { extractSkills } from "../services/skill.service.js";
 import { calculateMatch } from "../services/match.service.js";
 import Job from "../models/job.model.js";
 import Match from "../models/match.model.js";
-import { generateAIAnalytics } from "../services/ai.service.js";
+import { generateAIAnalysis } from "../services/ai.service.js";
 import redis from "../config/redis.js";
 
 export const uploadResume = async (req, res) => {
@@ -111,7 +111,7 @@ export const matchResumeToJob = async (req, res) => {
     const ruleResult = calculateMatch(resumeSkills, jobSkills);
 
     // AI-based analysis
-    const aiResponse = await generateAIAnalytics( resume.parsedText, job.description );
+    const aiResponse = await generateAIAnalysis( resume.parsedText, job.description );
 
     const savedMatch = await Match.create({
       userId: req.user.id, resumeId, jobId, ruleBasedScore: ruleResult.score, aiScore: aiResponse.overallScore, matchedskills: ruleResult.matchedSkills, missingSkills: ruleResult.missingSkills, strengths: aiResponse.strengths, suggestions: aiResponse.suggestions
