@@ -1,37 +1,54 @@
 import { motion } from "framer-motion";
+import { FaBrain, FaLayerGroup, FaCloud } from "react-icons/fa";
 
 const features = [
   {
+    icon: <FaBrain size={28} />,
     title: "AI Semantic Matching",
-    desc: "Uses Gemini API for deep contextual resume-job analysis."
+    desc: "Uses AI for deep contextual resume-job analysis."
   },
   {
+    icon: <FaLayerGroup size={28} />,
     title: "Hybrid Scoring Engine",
     desc: "Combines rule-based keyword matching with AI reasoning."
   },
   {
+    icon: <FaCloud size={28} />,
     title: "Cloud Caching",
-    desc: "Redis-powered caching for optimized performance."
+    desc: "Blazing-fast performance with intelligent Redis caching."
   }
 ];
 
 const Features = () => {
   return (
-    <section id="features" className="py-24 px-6 bg-gradient-to-b from-zinc-950 to-zinc-900">
+    <section id="features" className="py-32 px-6 bg-zinc-900 relative">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12">Powerful Features</h2>
+        <h2 className="text-4xl font-bold mb-16">
+          Powerful Features
+        </h2>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-12">
+        <div className="grid md:grid-cols-3 gap:10">
           {features.map((feature, index) => (
             <motion.div
               key={index}
+              initial={{ opacity: 0, t: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 2 }}
+              viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="bg-zinc-800 border border-zinc-700 p-8 rounded-2xl shadow-xl"
+              className="group bg-zinc-800 border border-zinc-700 p-10 rounded-2xl shadow-xl transition-all duration-300 hover:border-indigo-500"
             >
+              <div className="mb-6 text-indigo-400 group-hover:text-cyan-400 transition">
+                {feature.icon}
+              </div>
+
               <h3 className="text-xl font-semibold mb-4">
                 {feature.title}
               </h3>
-              <p className="text-zinc-400">{feature.desc}</p>
+
+              <p className="text-zinc-400">
+                {feature.desc}
+              </p>
             </motion.div>
           ))}
         </div>
