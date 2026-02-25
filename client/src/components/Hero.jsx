@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
     return (
@@ -10,8 +11,21 @@ const Hero = () => {
                   transition={{ duration: 0.8 }}
                   className="text-5xl md:text-6xl font-bold leading-tight"
                 >
-                    Optimize Your Resume with{" "}
-                    <span className="bg-gradient-to-r from-indigo-600 to-cyan-400 bg-clip-text text-transparent">
+                    <TypeAnimation
+                        sequence={[
+                            "Optimize Your Resume",
+                            2000,
+                            "Beat ATS Systems",
+                            2000,
+                            "Get More Interviews",
+                            2000
+                        ]}
+                        wrapper="h1"
+                        speed={50}
+                        repeat={Infinity}
+                        className="block m-6"
+                    />
+                    with{" "}<span className="bg-gradient-to-r from-indigo-600 to-cyan-400 bg-clip-text text-transparent">
                         AI Intelligence
                     </span>
                 </motion.h1>
