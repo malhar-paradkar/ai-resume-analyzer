@@ -21,7 +21,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section id="features" className="py-32 px-6 bg-zinc-900 relative">
+    <section id="features" className="py-32 px-6 bg-gradient-to-b from-zinc-950 to-zinc-900 relative">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-16">
           Powerful Features
@@ -33,10 +33,10 @@ const Features = () => {
               key={index}
               initial={{ opacity: 0, t: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 2 }}
+              transition={{ delay: index * 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="group bg-zinc-800 border border-zinc-700 p-10 rounded-2xl shadow-xl transition-all duration-300 hover:border-indigo-500"
+              className="group bg-zinc-800 border border-zinc-700 m-5 p-10 rounded-2xl shadow-xl transition-all duration-300 hover:border-indigo-500"
             >
               <div className="mb-6 text-indigo-400 group-hover:text-cyan-400 transition">
                 {feature.icon}

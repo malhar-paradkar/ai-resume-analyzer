@@ -33,7 +33,7 @@ const Hero = () => {
                 >
                     <a
                      href="#features"
-                     className="bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-xl text-white transition"
+                     className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:opacity-90 px-8 py-3 rounded-xl text-transparent bg-clip-text transition shadow-lg"
                     >
                         Explore Features
                     </a>
