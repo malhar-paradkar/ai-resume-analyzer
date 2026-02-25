@@ -1,13 +1,26 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <motion.nav
           initial={{ y: -60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="fixed top-0 w-full z-50 bg-zinc-950/70 backdrop-blur-lg border-b border-zinc-800"
+          className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800 shadow-lg" : "bg-transparent"} `}
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
                 <Link to="/" className="text-2xl font-bold text-white">
