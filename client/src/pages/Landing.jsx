@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar.jsx";
 import Hero from "../components/Hero.jsx";
+import About from "../components/About.jsx";
 import Features from "../components/Features.jsx";
 import { motion } from "framer-motion";
 
@@ -17,6 +18,7 @@ const Landing = () => {
 
             <div className="ptp-24 relative z-10">
                 <Hero />
+                <About />
                 <Features />
             </div>
         </div>
