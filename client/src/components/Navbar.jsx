@@ -31,6 +31,7 @@ const Navbar = () => {
                     <a href="#home" className="hover:text-whtie transition">Home</a>
                     <a href="#about" className="hover:text-whtie transition">About</a>
                     <a href="#features" className="hover:text-whtie transition">Features</a>
+                    <a href="#stats" className="hover:text-white transition">Impact</a>
                 </div>
 
                 <Link to="/login" className="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-xl text-white transition">
