@@ -27,16 +27,17 @@ const Features = () => {
           Powerful Features
         </h2>
 
-        <div className="grid md:grid-cols-3 gap:10">
+        <div className="grid md:grid-cols-3 gap:10 bg-white/5 backdrop-blur-2xl border border-white/10 p-10 rounded-2xl shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:shadow-indigo-500/20">
           {features.map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, t: 40 }}
+              animate={{ y: [0, -8, 0] }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 1 }}
+              transition={{ duration: 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="group bg-zinc-800 border border-zinc-700 m-5 p-10 rounded-2xl shadow-xl transition-all duration-300 hover:border-indigo-500"
+              className="group m-5 bg-white/5 backdrop-blur-2xl border border-white/10 p-10 rounded-2xl shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:shadow-indigo-500/20"
             >
               <div className="mb-6 text-indigo-400 group-hover:text-cyan-400 transition">
                 {feature.icon}
