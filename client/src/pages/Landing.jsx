@@ -4,6 +4,7 @@ import About from "../components/About.jsx";
 import Features from "../components/Features.jsx";
 import Stats from "../components/Stats.jsx";
 import ParticlesBackground from "../components/ParticlesBackground.jsx";
+import Footer from "../components/Footer.jsx";
 import { motion } from "framer-motion";
 
 const Landing = () => {
@@ -25,6 +26,7 @@ const Landing = () => {
                 <About />
                 <Features />
                 <Stats />
+                <Footer />
             </div>
         </div>
     );
