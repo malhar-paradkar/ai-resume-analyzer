@@ -1,11 +1,22 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
+
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center px-6 text-center">
+        <section id="home" className="min-h-screen flex items-center justify-center px-6 text-center" ref={ref}>
             <div className="max-w-3xl">
                 <motion.h1
+                  style={{ y }}
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
