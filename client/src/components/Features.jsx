@@ -41,7 +41,7 @@ const Features = () => {
               className="group relative"
             >
               {/* Animated Gradient Border */}
-              <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-indigo-500 via-cyan-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition duration-500 blur-sm"></div>
+              <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-indigo-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition duration-500 blur-sm"></div>
 
               {/* Glass Card */}
               <motion.div
@@ -53,11 +53,11 @@ const Features = () => {
                   {feature.icon}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="text-xl font-semibold mb-4 group-hover:text-zinc-800 transition duration-900 group-hover:scale-105">
                   {feature.title}
                 </h3>
 
-                <p className="text-zinc-400 leading-relaxed">
+                <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-800">
                   {feature.desc}
                 </p>
               </motion.div>
