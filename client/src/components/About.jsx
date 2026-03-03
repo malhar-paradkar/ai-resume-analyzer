@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
     return (
-        <section id="about" className="py-32 px-6 bg-zinc-950">
+        <section id="about" className="py-32 px-6 dark:bg-zinc-950">
             <div className="max-w-4xl mx-auto text-center">
                 <motion.h2
                   initial={{opacity: 0, y: 30}}
@@ -19,7 +19,7 @@ const About = () => {
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="text-zinc-400 text-lg leading-relaxed"
+                  className="dark:text-zinc-400 text-lg leading-relaxed"
                 >
                     Modern hiring systems use Applicant Tracking Systems (ATS) 
                     powered by advanced algorithms. ResumeAI was built to simulate 
