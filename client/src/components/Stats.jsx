@@ -8,7 +8,7 @@ const stats = [
 
 const Stats = () => {
     return (
-        <section id="stats" className="py-32 px-6 bg-zinc-900">
+        <section id="stats" className="py-32 px-6 dark:bg-zinc-900 backdrop-blur-xl">
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-4xl font-bold mb-16">
                     Impact
@@ -22,9 +22,9 @@ const Stats = () => {
                           whileInView={{opacity: 1, scale: 1}}
                           transition={{delay: index * 0.2}}
                           viewport={{once: true}}
-                          className="bg-zinc-800 p-10 rounded-2xl border border-zinc-700 shadow-lg"
+                          className="dark:bg-zinc-800 p-10 rounded-2xl border border-zinc-400 dark:border-zinc-900 dark:transition shadow-md"
                         >
-                            <h3 className="text-4xl font-bold text-indigo-400 mb-4">
+                            <h3 className="text-4xl font-bold dark:text-indigo-400 mb-4">
                                 {stat.value}
                             </h3>
 

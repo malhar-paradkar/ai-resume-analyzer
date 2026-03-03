@@ -53,12 +53,12 @@ const Hero = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ dela: 0.5 }}
+                  transition={{ delay: 0.5 }}
                   className="mt-8"
                 >
                     <a
                      href="#features"
-                     className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:opacity-90 px-8 py-3 rounded-xl text-transparent bg-clip-text transition shadow-lg"
+                     className="bg-gradient-to-r from-indigo-600 to-cyan-500 hover:opacity-90 px-8 py-3 rounded-xl text-transparent bg-clip-text transition shadow-xl"
                     >
                         Explore Features
                     </a>

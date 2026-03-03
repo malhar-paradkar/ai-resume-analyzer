@@ -23,7 +23,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="py-32 px-6 bg-gradient-to-b from-zinc-950 to-zinc-900 relative"
+      className="py-32 px-6 dark:bg-gradient-to-b from-zinc-950 to-zinc-900 relative backdrop-blur-md"
     >
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-16">
@@ -41,7 +41,7 @@ const Features = () => {
               className="group relative"
             >
               {/* Animated Gradient Border */}
-              <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-indigo-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition duration-500 blur-sm"></div>
+              <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-zinc-400 to-zinc-500 dark:from-indigo-500 dark:to-cyan-500 opacity-0 group-hover:opacity-100 transition duration-500 blur-sm" />
 
               {/* Glass Card */}
               <motion.div
@@ -49,7 +49,7 @@ const Features = () => {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="relative bg-white/5 backdrop-blur-2xl border border-white/10 p-10 rounded-2xl shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:shadow-indigo-500/20"
               >
-                <div className="mb-6 text-indigo-400 transition duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:text-cyan-400">
+                <div className="mb-6 text-black transition duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:text-slate-300 dark:group-hover:text-cyan-400">
                   {feature.icon}
                 </div>
 
